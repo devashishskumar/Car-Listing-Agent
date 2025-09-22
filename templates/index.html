@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚗 Car Listing Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-car"></i>
+                    <h1>Car Listing Agent</h1>
+                </div>
+                <p class="tagline">Find your perfect car with AI-powered search</p>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-box">
+                    <div class="search-input-group">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="What kind of car are you looking for?"
+                            autocomplete="off"
+                        >
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Example Queries -->
+                <div class="examples">
+                    <p class="examples-label">Try these examples:</p>
+                    <div class="example-tags">
+                        <span class="example-tag" data-query="Honda Civic under $20,000">Honda Civic under $20,000</span>
+                        <span class="example-tag" data-query="BMW X3 with low mileage">BMW X3 with low mileage</span>
+                        <span class="example-tag" data-query="Toyota Camry 2020 or newer">Toyota Camry 2020 or newer</span>
+                        <span class="example-tag" data-query="Electric car under $30,000">Electric car under $30,000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Searching for cars...</p>
+                <small>This may take a few moments</small>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section" style="display: none;">
+            <!-- Enhanced Query Display -->
+            <div class="enhanced-query">
+                <h3><i class="fas fa-magic"></i> Enhanced Search</h3>
+                <p id="enhancedQuery"></p>
+            </div>
+
+            <!-- Results Summary -->
+            <div class="results-summary">
+                <h2><i class="fas fa-list"></i> Search Results</h2>
+                <p id="resultsCount"></p>
+            </div>
+
+            <!-- Car Listings -->
+            <div id="listingsContainer" class="listings-container">
+                <!-- Listings will be populated by JavaScript -->
+            </div>
+
+            <!-- AI Analysis -->
+            <div class="ai-analysis">
+                <h3><i class="fas fa-brain"></i> AI Analysis</h3>
+                <div id="analysisContent" class="analysis-content">
+                    <!-- Analysis will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Section -->
+        <div id="errorSection" class="error-section" style="display: none;">
+            <div class="error-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Oops! Something went wrong</h3>
+                <p id="errorMessage"></p>
+                <button onclick="hideError()" class="retry-btn">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Car Listing Agent. Powered by AI and web scraping.</p>
+            <div class="footer-links">
+                <a href="#" onclick="showAbout()">About</a>
+                <a href="#" onclick="showHelp()">Help</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+            <h2>About Car Listing Agent</h2>
+            <p>This AI-powered car search agent helps you find the perfect vehicle by:</p>
+            <ul>
+                <li>Processing your natural language queries with OpenAI GPT</li>
+                <li>Searching multiple car listing websites</li>
+                <li>Providing intelligent analysis and recommendations</li>
+                <li>Displaying results in an easy-to-read format</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('helpModal')">&times;</span>
+            <h2>How to Use</h2>
+            <div class="help-content">
+                <h3>Search Tips:</h3>
+                <ul>
+                    <li>Be specific about make and model</li>
+                    <li>Include price range if desired</li>
+                    <li>Mention year preferences</li>
+                    <li>Add features like "low mileage" or "automatic"</li>
+                </ul>
+                <h3>Example Queries:</h3>
+                <ul>
+                    <li>"Find me a Honda Civic under $20,000"</li>
+                    <li>"Looking for a BMW X3 with low mileage"</li>
+                    <li>"Toyota Camry 2020 or newer"</li>
+                    <li>"Electric car under $30,000"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+
+
