@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚗 Car Chat Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Chat Header -->
+        <header class="chat-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-car"></i>
+                    <h1>Car Chat Agent</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="newChatBtn" class="new-chat-btn" title="Start New Chat">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button id="searchModeBtn" class="mode-btn" title="Switch to Search Mode">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Messages Area -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Welcome message will be inserted here -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="typingIndicator" class="typing-indicator" style="display: none;">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span class="typing-text">Agent is typing...</span>
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="chat-input-area">
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Ask me about cars... (e.g., 'I'm looking for a Honda Civic under $20,000')"
+                        rows="1"
+                        maxlength="500"
+                    ></textarea>
+                    <button id="sendBtn" class="send-btn" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span class="char-count">0/500</span>
+                    <span class="input-hint">Press Enter to send, Shift+Enter for new line</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Car Listings Modal -->
+        <div id="listingsModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-list"></i> Car Search Results</h3>
+                    <button class="close-btn" onclick="closeListingsModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="listingsContainer">
+                        <!-- Listings will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions" id="quickActions">
+            <div class="quick-actions-header">
+                <span>Quick Start:</span>
+            </div>
+            <div class="quick-actions-buttons">
+                <button class="quick-action-btn" data-message="I'm looking for a Honda Civic under $20,000">
+                    <i class="fas fa-car"></i> Honda Civic under $20k
+                </button>
+                <button class="quick-action-btn" data-message="Show me BMW X3 with low mileage">
+                    <i class="fas fa-search"></i> BMW X3 low mileage
+                </button>
+                <button class="quick-action-btn" data-message="I need a reliable sedan under $25,000">
+                    <i class="fas fa-shield-alt"></i> Reliable sedan
+                </button>
+                <button class="quick-action-btn" data-message="What's the best SUV under $30,000?">
+                    <i class="fas fa-question"></i> Best SUV under $30k
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
+

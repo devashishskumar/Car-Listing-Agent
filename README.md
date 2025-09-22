@@ -49,7 +49,10 @@ python car_agent.py "Find me a Honda Civic under $20,000"
 
 ## 🌐 Web Interface Features
 
-The web interface provides a modern, user-friendly experience:
+The web interface provides two modes for interacting with the Car Listing Agent:
+
+### 🔍 Search Mode (`/`)
+A modern, user-friendly search experience:
 
 - **🎨 Beautiful Design**: Modern gradient UI with smooth animations
 - **⚡ Real-time Search**: Instant feedback and loading indicators
@@ -60,6 +63,18 @@ The web interface provides a modern, user-friendly experience:
 - **🎯 Example Queries**: Click-to-search example queries
 - **❓ Help System**: Built-in help and about modals
 
+### 💬 Chat Mode (`/chat`)
+A conversational interface for natural interaction:
+
+- **🤖 Conversational AI**: Natural chat experience with the AI assistant
+- **🧠 Context Awareness**: Remembers conversation history and preferences
+- **🎯 Smart Intent Recognition**: Automatically detects when you want to search for cars
+- **⚡ Quick Actions**: Pre-defined buttons for common car searches
+- **⌨️ Typing Indicators**: Shows when the AI is responding
+- **📱 Modal Results**: Car listings displayed in a beautiful modal overlay
+- **🔄 New Chat**: Start fresh conversations anytime
+- **📊 Real-time Analysis**: AI provides insights about found listings
+
 ### Web Interface Screenshots
 - Clean, modern search interface
 - Detailed car listings with prices and mileage
@@ -68,7 +83,8 @@ The web interface provides a modern, user-friendly experience:
 
 ## Example Queries
 
-The agent can understand various types of car search queries:
+### 🔍 Search Mode Queries
+Direct search queries that immediately return car listings:
 
 - `"Find me a Honda Civic under $20,000"`
 - `"Looking for a BMW X3 with low mileage"`
@@ -76,6 +92,16 @@ The agent can understand various types of car search queries:
 - `"Electric car under $30,000"`
 - `"Ford F-150 pickup truck"`
 - `"Luxury sedan with leather seats"`
+
+### 💬 Chat Mode Conversations
+Natural conversations that can lead to car searches:
+
+- `"Hi, I'm looking for a reliable car"`
+- `"What's the best SUV under $25,000?"`
+- `"I need help finding a family car"`
+- `"Can you recommend a good Honda?"`
+- `"I'm interested in electric vehicles"`
+- `"What should I look for when buying a used car?"`
 
 ## How It Works
 
@@ -88,19 +114,23 @@ The agent can understand various types of car search queries:
 
 ```
 Car Agent/
-├── app.py               # Flask web application
-├── car_agent.py         # Command-line agent script
-├── car_scraper.py       # Web scraping functionality
-├── ai_processor.py      # OpenAI integration for query processing
-├── config.py           # Configuration settings
-├── requirements.txt    # Python dependencies
-├── templates/          # HTML templates
-│   └── index.html     # Main web interface
-├── static/            # Static web assets
+├── app.py                    # Flask web application
+├── car_agent.py              # Command-line agent script
+├── car_scraper.py            # Web scraping functionality
+├── ai_processor.py           # OpenAI integration for query processing
+├── conversation_manager.py   # Chat conversation management
+├── config.py                 # Configuration settings
+├── requirements.txt          # Python dependencies
+├── templates/                # HTML templates
+│   ├── index.html           # Search interface
+│   └── chat.html            # Chat interface
+├── static/                  # Static web assets
 │   ├── css/
-│   │   └── style.css  # Modern CSS styling
+│   │   ├── style.css        # Search interface styles
+│   │   └── chat.css         # Chat interface styles
 │   └── js/
-│       └── app.js     # Interactive JavaScript
+│       ├── app.js           # Search interface JavaScript
+│       └── chat.js          # Chat interface JavaScript
 ├── setup.py           # Easy setup script
 ├── demo.py            # Demo script
 └── README.md          # This file
